@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Poppins:wght@300;400;500;600;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.ft-logo{
+    font-family: 'Laila', sans-serif;
+    font-weight: 700;
+    color: #6517BE;
+}
+.ft{
+    font-family: 'Laila', sans-serif;
+    font-weight: 700;
+}
+.poppins{
+    font-family: 'Poppins', sans-serif;
+}
+
+@layer components{
+    .cta-button--primary{
+        @apply px-5 py-2 tracking-wide text-white bg-purple-700 hover:bg-purple-900 focus:outline outline-purple-400 rounded-[8px] transition-colors duration-200
+    }
+    .cta-button--secondary{
+        @apply px-5 py-1.5 tracking-wide text-purple-900 hover:underline focus:underline underline-offset-2
+    }
+    .button-nav__mobile{
+        @apply relative ring-1 ring-purple-400 hover:bg-purple-700 hover:text-white text-purple-800 bg-white flex rounded-full items-center justify-center w-10 h-10 text-sm poppins transition-all duration-200
+    }
+    .icon-button--wrapper{
+        @apply w-10 h-10 flex items-center justify-center rounded-full text-purple-700 hover:bg-purple-400/40 transition-all duration-200
+    }
+    .sidebar-button{
+        @apply text-purple-900 bg-purple-300/50 ring-1 ring-purple-300 hover:bg-purple-700 hover:text-white flex rounded-md items-center w-full px-2 py-2 gap-x-3 text-sm poppins shadow-md transition-all duration-200
+    }
+    .active__sidebar-button{
+        @apply bg-purple-700 text-white
+    }
+    .nav-profile--button{
+        @apply flex rounded-md items-center w-full px-2 py-2 text-sm ring-1 poppins transition-all duration-200
+    }
+}
