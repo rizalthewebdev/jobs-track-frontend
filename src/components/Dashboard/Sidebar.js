@@ -5,9 +5,11 @@ import {RiSearchLine} from 'react-icons/ri'
 import {FiPlus} from 'react-icons/fi'
 import {IoStatsChartOutline} from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
+import { BsPerson } from "react-icons/bs";
 
 const Sidebar = () => {
    const { showSidebar } = useAppContext();
+
    return (
       showSidebar && (
          <>
@@ -56,6 +58,17 @@ const Sidebar = () => {
                   >
                      <RiSearchLine fontSize={20} />
                      Search Job
+                  </NavLink>
+                  <NavLink
+                     to="profile"
+                     className={({ isActive }) =>
+                        isActive
+                           ? "active__sidebar-button sidebar-button"
+                           : "sidebar-button"
+                     }
+                  >
+                     <BsPerson fontSize={20}/>
+                     My Profile
                   </NavLink>
                </div>
             </div>

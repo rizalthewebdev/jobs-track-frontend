@@ -29,16 +29,15 @@ import {
    CLEAR_FILTERS,
    CHANGE_PAGE,
    OPEN_MODAL,
-   CLOSE_MODAL
+   CLOSE_MODAL,
 } from "./actions";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
-const userLocation = localStorage.getItem("userLocation");
 
 const initialState = {
    showSidebar: false,
-   showModal: true,
+   showModal: false,
    isLoading: false,
    isMember: false,
    isEditing: false,
@@ -49,11 +48,10 @@ const initialState = {
    alertType: "",
    user: user ? JSON.parse(user) : null,
    token: token,
-   userLocation: userLocation || "",
    editJobId: "",
    position: "",
    company: "",
-   jobLocation: userLocation || "",
+   jobLocation: "",
    jobTypeOptions: ["full-time", "part-time", "remote", "internship"],
    jobType: "full-time",
    statusOptions: ["interview", "declined", "pending"],
@@ -117,27 +115,26 @@ const AppProvider = ({ children }) => {
    };
 
    // Save to LocalStorage
-   const addUserToLocalStorage = ({ user, token, location }) => {
+   const addUserToLocalStorage = ({ user, token }) => {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
-      localStorage.setItem("location", location);
    };
 
    // remove from LocalStorage
    const removeUserFromLocalStorage = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      localStorage.removeItem("location");
    };
 
    // setup User
-   const setupUser = ({ currentUser, endPoint, alertText }) => {
+   const setupUser = async ({ currentUser, endPoint, alertText }) => {
       dispatch({ type: SETUP_USER_BEGIN });
       try {
-         const { data } = axios.post(
-            `${authFetch}/auth/${endPoint}`,
+         const { data } = await axios.post(
+            `${process.env.REACT_APP_API_URL}/auth/${endPoint}`,
             currentUser
          );
+
          const { user, token } = data;
          dispatch({
             type: SETUP_USER_SUCCESS,
@@ -147,7 +144,7 @@ const AppProvider = ({ children }) => {
       } catch (error) {
          dispatch({
             type: SETUP_USER_ERROR,
-            payload: { message: error.response.data.message },
+            payload: { message: error },
          });
       }
    };
@@ -177,7 +174,7 @@ const AppProvider = ({ children }) => {
    const updateUser = async (currentUser) => {
       dispatch({ type: UPDATE_USER_BEGIN });
       try {
-         const { data } = authFetch.patch("/auth/updateUser", currentUser);
+         const { data } = await authFetch.patch("/auth/updateUser", currentUser);
 
          const { user, token } = data;
 

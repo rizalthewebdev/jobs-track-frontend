@@ -27,7 +27,7 @@ const LandingPage = () => {
                   build with job tracking API for the backend which has
                   registration, login and CRUD features which made by me
                </p>
-               <Link to="register">
+               <Link to="auth">
                   <button className="cta-button--primary poppins" onClick={openModal}>
                      Get Started
                   </button>

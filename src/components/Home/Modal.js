@@ -1,11 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import Login from "./Login";
-import Register from "./Register";
 import { useAppContext } from "../../context/appContext";
+import Authentication from "./Authentication";
+import Alert from "../Alert";
 
-export default function Modal({ register, login }) {
-   const {showModal, closeModal} = useAppContext()
+export default function Modal() {
+   const {showModal, closeModal, showAlert} = useAppContext()
 
    return (
       <>
@@ -15,6 +15,7 @@ export default function Modal({ register, login }) {
                className="fixed inset-0 z-10 overflow-y-auto"
                onClose={closeModal}
             >
+                        {showAlert && <Alert auth />}
                <div className="min-h-screen bg-black/75 px-4 text-center">
                   <Transition.Child
                      as={Fragment}
@@ -51,11 +52,7 @@ export default function Modal({ register, login }) {
                            alt="wave"
                            className="fixed top-14 left-0 right-0"
                         />
-                        <h4 className="absolute left-14 text-2xl tracking-wide ft text-white">
-                           {`${register ? 'Register' : 'Login'}`}
-                        </h4>
-                        {register && <Register />}
-                        {login && <Login />}
+                        <Authentication/>
                      </div>
                   </Transition.Child>
                </div>

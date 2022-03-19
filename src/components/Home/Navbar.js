@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 
 const Navbar = () => {
-   const { openModal } = useAppContext();
+   let { openModal } = useAppContext();
 
    return (
       <header>
@@ -13,20 +13,13 @@ const Navbar = () => {
                   JT
                </a>
                <div className="flex items-center justify-center space-x-2 poppins text-sm">
-                  <Link to="/register">
+                  <Link to="/auth">
                      <button
-                        className="cta-button--primary"
+                        className="cta-button--primary text-purple-800 bg-white hover:text-white ring-1 ring-purple-700 hover:bg-purple-700 font-semibold focus:outline-none"
                         onClick={openModal}
+                        title="Register/Login User"
                      >
-                        Get Started
-                     </button>
-                  </Link>
-                  <Link to="/login">
-                     <button
-                        className="cta-button--secondary"
-                        onClick={openModal}
-                     >
-                        Login
+                        Register / Login
                      </button>
                   </Link>
                </div>

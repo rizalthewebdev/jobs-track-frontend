@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Dashboard = () => {
+  const localUser = localStorage.getItem('user')
+const user = JSON.parse(localUser)
+
   return (
-    <div>Dashboard</div>
+    <div>Hi, {user.name}</div>
   )
 }
 

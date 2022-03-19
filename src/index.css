@@ -21,9 +21,6 @@
     .cta-button--primary{
         @apply px-5 py-2 tracking-wide text-white bg-purple-700 hover:bg-purple-900 focus:outline outline-purple-400 rounded-[8px] transition-colors duration-200
     }
-    .cta-button--secondary{
-        @apply px-5 py-1.5 tracking-wide text-purple-900 hover:underline focus:underline underline-offset-2
-    }
     .button-nav__mobile{
         @apply relative ring-1 ring-purple-400 hover:bg-purple-700 hover:text-white text-purple-800 bg-white flex rounded-full items-center justify-center w-10 h-10 text-sm poppins transition-all duration-200
     }
@@ -38,5 +35,20 @@
     }
     .nav-profile--button{
         @apply flex rounded-md items-center w-full px-2 py-2 text-sm ring-1 poppins transition-all duration-200
+    }
+    .shown-password{
+        @apply absolute right-0 top-0 bottom-0 text-purple-400 text-xl w-10 h-10 hover:text-purple-700 flex items-center justify-center
+    }
+    .alert{
+        @apply w-full flex items-center justify-center py-3 poppins
+    }
+    .success{
+        @apply bg-green-300 text-green-900
+    }
+    .danger{
+        @apply bg-red-300 text-red-900
+    }
+    .title-page{
+        @apply ft-logo w-full flex items-center justify-center md:justify-start text-xl md:px-14
     }
 }
